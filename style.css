@@ -1,0 +1,55 @@
+/* General Setup */
+* { margin: 0; padding: 0; box-box-sizing: border-box; }
+body { 
+    background-color: #0c0a09; 
+    color: #e7e5e4; 
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
+
+/* Hero Block */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://images.unsplash.com/photo-1444464666168-49d633b86747?q=80&w=2070') no-repeat center center/cover;
+    position: relative;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), #0c0a09);
+}
+
+.hero-content { position: relative; z-index: 10; padding: 20px; }
+
+.subtitle { color: #eab308; letter-spacing: 5px; font-weight: bold; margin-bottom: 15px; font-size: 0.8rem; }
+
+h1 { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; margin-bottom: 20px; }
+
+.description { max-width: 600px; margin: 0 auto 40px; color: #a8a29e; font-size: 1.2rem; }
+
+/* Buttons */
+.btn { text-decoration: none; padding: 15px 35px; font-weight: bold; border-radius: 4px; display: inline-block; margin: 10px; transition: 0.3s; }
+.primary { background: #ca8a04; color: black; }
+.secondary { border: 1px solid #444; color: white; }
+.btn:hover { opacity: 0.8; transform: translateY(-3px); }
+
+/* History Block */
+.history-block { padding: 100px 0; border-top: 1px solid #1c1917; }
+h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px; }
+.quote { font-style: italic; color: #a8a29e; font-size: 1.5rem; margin-bottom: 50px; }
+
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.feature-card { background: #1c1917; padding: 30px; border-radius: 8px; text-align: left; }
+.feature-card h3 { color: #ca8a04; margin-bottom: 15px; }
+
+/* Fundraiser Block */
+.fund-block { padding: 100px 0; background: #171717; }
+.payment-options button { padding: 15px 30px; margin: 10px; cursor: pointer; border: none; font-weight: bold; border-radius: 4px; }
+.crypto { background: #3b82f6; color: white; }
