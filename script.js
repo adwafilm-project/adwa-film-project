@@ -1,30 +1,34 @@
-// 1. Hero Slider
-let currentSlide = 0;
+// 1. Smooth Slide Transition
+let slideIndex = 0;
 const slides = document.querySelectorAll('.slide');
 
-function nextSlide() {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
+function showSlides() {
+    slides.forEach(s => s.classList.remove('active'));
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].classList.add('active');
+    setTimeout(showSlides, 6000); 
 }
+showSlides();
 
-if (slides.length > 0) {
-    setInterval(nextSlide, 5000);
-}
-
-// 2. Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+// 2. Scroll Reveal Animation (Simple version)
+window.addEventListener('scroll', () => {
+    const cards = document.querySelectorAll('.art-item, .funding-card');
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < window.innerHeight - 100) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }
     });
 });
 
-// 3. Simple Crypto Hook Placeholder
-const connectBtn = document.getElementById('connect-wallet');
-connectBtn.addEventListener('click', () => {
-    alert("Crypto Wallet Connection Module Initializing...");
-    // Later: await window.ethereum.request({ method: 'eth_requestAccounts' });
+// 3. Floating Button Visibility
+window.addEventListener('scroll', () => {
+    const fab = document.querySelector('.floating-join');
+    if (window.scrollY > 500) {
+        fab.style.display = 'flex';
+    } else {
+        fab.style.display = 'none';
+    }
 });
