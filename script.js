@@ -1,32 +1,30 @@
-// 1. HERO SLIDER LOGIC
+// 1. Hero Slider
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
-const slideInterval = 5000; // Changes every 5 seconds
 
 function nextSlide() {
-    // Remove active status from current
     slides[currentSlide].classList.remove('active');
-    
-    // Calculate next index
     currentSlide = (currentSlide + 1) % slides.length;
-    
-    // Add active status to next
     slides[currentSlide].classList.add('active');
 }
 
-// Start the timer if slides exist
 if (slides.length > 0) {
-    setInterval(nextSlide, slideInterval);
+    setInterval(nextSlide, 5000);
 }
 
-// 2. SMOOTH SCROLL LOGIC
-document.querySelector('.primary').addEventListener('click', function(e) {
-    // Only scroll if the link is an anchor to #fundraiser
-    if(this.getAttribute('href').startsWith('#')) {
+// 2. Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector('#fundraiser');
-        target.scrollIntoView({ behavior: 'smooth' });
-    }
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });
 
-console.log("Adwa 1896 Site: Hero Slider & Navigation Initialized.");
+// 3. Simple Crypto Hook Placeholder
+const connectBtn = document.getElementById('connect-wallet');
+connectBtn.addEventListener('click', () => {
+    alert("Crypto Wallet Connection Module Initializing...");
+    // Later: await window.ethereum.request({ method: 'eth_requestAccounts' });
+});
