@@ -1,41 +1,48 @@
-// 1. Cinematic Slider Logic
-let currentSlide = 0;
+// 1. CINEMATIC SLIDER LOGIC
+let slideIndex = 0;
 const slides = document.querySelectorAll('.slide');
 
-function rotate() {
-    slides.forEach(s => s.classList.remove('active'));
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
+function rotateSlides() {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
 }
-if(slides.length > 0) setInterval(rotate, 5000);
 
-// 2. Smooth Scrolling for Navigation
+if (slides.length > 0) {
+    setInterval(rotateSlides, 5000); 
+}
+
+// 2. SMOOTH ANCHOR SCROLLING
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if(target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// 3. Floating Button Visibility Control
+// 3. FLOATING BUTTON VISIBILITY LOGIC
+const fab = document.querySelector('.floating-join');
 window.addEventListener('scroll', () => {
-    const fab = document.querySelector('.floating-join');
-    if(window.scrollY > 800) {
-        fab.style.display = "flex";
+    if (window.scrollY > 600) {
+        fab.style.opacity = "1";
+        fab.style.pointerEvents = "auto";
+        fab.style.transform = "translateY(0)";
     } else {
-        fab.style.display = "none";
+        fab.style.opacity = "0";
+        fab.style.pointerEvents = "none";
+        fab.style.transform = "translateY(20px)";
     }
 });
 
-// 4. Crypto Connection Placeholder
+// 4. CRYPTO WALLET HOOK
 const walletBtn = document.getElementById('connect-wallet');
-if(walletBtn) {
+if (walletBtn) {
     walletBtn.addEventListener('click', () => {
-        alert("Connecting to secure decentralized payment gateway...");
+        alert("Initiating secure connection to Web3 Wallet (MetaMask/WalletConnect)...");
     });
 }
 
-console.log("Adwa 1896: Pixel-Perfect Deployment Initialized.");
+console.log("Adwa 1896: 12-Block Epic Site Initialized Successfully.");
